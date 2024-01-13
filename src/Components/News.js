@@ -118,12 +118,12 @@ const News = (props)=> {
         </h2>
         {loading && <Spinner />}
 
-        <InfiniteScroll
-          dataLength={articles.length} //This is important field to render the next data
-          next={fetchMoreData}
-          hasMore={articles.length !== totalResults}
-          loader={<Spinner />}
-        >
+       <InfiniteScroll
+        dataLength={articles ? articles.length : 0} // Set a default value if articles is null or undefined
+        next={fetchMoreData}
+        hasMore={articles ? articles.length !== totalResults : false} // Adjusted to handle null or undefined
+        loader={<Spinner />}
+      >
 
 
           <div className="container">
